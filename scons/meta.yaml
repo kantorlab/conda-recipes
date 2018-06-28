@@ -1,0 +1,42 @@
+package:
+  name: scons
+  version: 3.0.1.1
+
+source:
+  url: https://github.com/mhowison/scons/releases/download/untagged-fe8c0882373bf42374c9/scons-3.0.1.tar.gz
+  sha1: 43429d6dc42e90bbb0585414f21e4289b77f7c78
+
+build:
+  # scons has a custom setup.py script, --standard-lib is a custom option
+  script: python setup.py install --standard-lib
+
+requirements:
+  build:
+    - python
+    - libxml2
+    - lxml
+  run:
+    - python
+
+test:
+  imports:
+    - SCons
+    - SCons.Node
+    - SCons.Options
+    - SCons.Platform
+    - SCons.Scanner
+    - SCons.Script
+    - SCons.Tool
+    - SCons.Tool.MSCommon
+    - SCons.Tool.docbook
+    - SCons.Tool.packaging
+    - SCons.Variables
+    - SCons.compat
+  commands:
+    - scons --help
+
+about:
+  home: http://www.scons.org/
+  license: MIT
+  license_file: LICENSE.txt
+  summary: Open Source next-generation build tool.
