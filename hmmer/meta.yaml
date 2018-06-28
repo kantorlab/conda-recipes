@@ -1,0 +1,21 @@
+package:
+  name: hmmer
+  version: 3.2.1
+
+source:
+  url: http://eddylab.org/software/hmmer/hmmer-3.2.1.tar.gz
+  sha1: d50bd97ef696e2adf52fe8721f54cc99fb21344f
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+
+test:
+  commands:
+    - alimask -h 2>&1 | grep Usage > /dev/null
+
+about:
+  home: http://hmmer.org/
+  license: GPLv3
+  license_file: LICENSE
+  summary: Biosequence analysis using profile hidden Markov models
