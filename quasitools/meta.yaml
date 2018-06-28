@@ -1,0 +1,44 @@
+package:
+  name: quasitools
+  version: 0.3.1
+
+source:
+  git_url: https://github.com/phac-nml/quasitools
+  git_tag: v0.3.1
+
+build:
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - biopython
+    - click
+    - numpy
+    - scipy
+    - bowtie2 ==2.3.4.1
+    - pysam ==0.14.1
+    - samtools ==1.3.1
+  run:
+    - python
+    - setuptools
+    - biopython
+    - click
+    - numpy
+    - scipy
+    - bowtie2 ==2.3.4.1
+    - pysam ==0.14.1
+    - samtools ==1.3.1
+
+test:
+  imports:
+    - quasitools
+  commands:
+    - quasitools
+
+about:
+  home: https://github.com/phac-nml/quasitools
+  license: Apache License 2.0
+  license_file: LICENSE.txt
+  summary: Quasitools is a collection of tools for analysing Viral Quasispecies
