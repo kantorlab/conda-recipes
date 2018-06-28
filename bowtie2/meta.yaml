@@ -1,0 +1,37 @@
+package:
+  name: bowtie2
+  version: 2.3.4.1
+
+source:
+  fn: bowtie2-2.3.4.1.tar.gz
+  url: https://github.com/BenLangmead/bowtie2/archive/v2.3.4.1.tar.gz
+  sha256: 872f2580221dcc9bb4a8e3d04e032c168883c4c529d0733e3d94fe693f7732b2
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - python
+    - zlib
+  run:
+    - python
+    - zlib
+
+test:
+  commands:
+    - bowtie2 --help
+    - bowtie2-align-l --help
+    - bowtie2-align-s --help
+    - bowtie2-build --help
+    - bowtie2-build-l --help
+    - bowtie2-build-s --help
+    - bowtie2-inspect --help
+    - bowtie2-inspect-l --help
+    - bowtie2-inspect-s --help
+
+about:
+  home: http://bowtie-bio.sourceforge.net/bowtie2/index.shtml
+  summary: Fast and sensitive read alignment
+  license: GPLv3
+  license_file: LICENSE
