@@ -1,0 +1,23 @@
+package:
+  name: blastdb
+  version: 2.7.1
+
+source:
+  fn: blast-2.7.1.tar.gz
+  url: ftp://ftp.ncbi.nlm.nih.gov/blast/executables/blast+/2.7.1/ncbi-blast-2.7.1+-x64-linux.tar.gz
+  md5: 9d31dff42ab2b0d9565f761ce340e4ba  
+
+test:
+  files:
+    - test.fa
+    - testdatabase.fa
+  commands:
+    - blastdbcmd -help
+    - blastdb_aliastool -help
+    - makeblastdb -help
+
+about:
+  home: http://blast.ncbi.nlm.nih.gov/Blast.cgi?PAGE_TYPE=BlastDocs
+  summary: BLAST+ is a new suite of BLAST tools that utilizes the NCBI C++ Toolkit
+  license: Public Domain
+  license_file: LICENSE
