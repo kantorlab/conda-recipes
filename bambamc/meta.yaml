@@ -1,0 +1,28 @@
+package:
+  name: bambamc
+  version: 0.0.50
+
+source:
+  fn: bambamc-0.0.50.tar.gz
+  url: https://github.com/gt1/bambamc/archive/0.0.50-release-20140430085950.tar.gz
+  md5: 4de1f030fab1de54387f68e4fbd2cd35
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+  host:
+    - zlib
+  run:
+    - zlib
+
+test:
+ commands:
+    - test -f ${PREFIX}/include/bambamc/BamBam_Config.h
+    - test -f ${PREFIX}/lib/libbambamc.so.0.0.50
+    - test -f ${PREFIX}/lib/libbambamc.a
+
+about:
+  home: https://github.com/gt1/bambamc
+  summary: lightweight C implementation of name collating BAM file input and BAM file output
+  license: GPLv3
+  license_file: COPYING
