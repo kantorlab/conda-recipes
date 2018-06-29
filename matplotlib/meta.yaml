@@ -1,0 +1,62 @@
+package:
+  name: matplotlib
+  version: 2.2.2
+
+source:
+  fn: matplotlib-2.2.2.tar.gz
+  url: https://github.com/matplotlib/matplotlib/archive/v2.2.2.tar.gz
+  sha256: 3a8236e6747dbb48c342ee194a8ced2805205cbd718899b284e4d617189cd397
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - python
+    - setuptools
+    - cycler
+    - freetype
+    - kiwisolver
+    - numpy
+    - pkg-config
+    - pyparsing
+    - python-dateutil
+    - libpng
+    - zlib
+  run:
+    - python
+    - setuptools
+    - cycler
+    - freetype
+    - kiwisolver
+    - numpy
+    - pkg-config
+    - pyparsing
+    - python-dateutil
+    - libpng
+    - zlib
+    
+test:
+  imports:
+    - matplotlib
+    - matplotlib.pyplot
+    - matplotlib._image
+    - matplotlib._path
+    - matplotlib._png
+    - matplotlib._tri
+    - matplotlib.backends._backend_agg
+    - matplotlib.ft2font
+    - matplotlib.ttconv
+    - mpl_toolkits
+    - pylab
+  commands:
+    - conda inspect linkages -p $PREFIX $PKG_NAME  # [not win]
+    - conda inspect objects -p $PREFIX $PKG_NAME  # [osx]
+
+about:
+  home: http://matplotlib.org/
+  license: PSF-based
+  license_url: http://matplotlib.sourceforge.net/users/license.html
+  license_family: PSF
+  license_file: LICENSE/LICENSE
+  summary: Publication quality figures in Python
