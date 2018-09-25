@@ -1,0 +1,22 @@
+package:
+  name: raxml
+  version: 8.2.12
+
+source:
+  git_url: https://github.com/stamatak/standard-RAxML
+  git_tag: v8.2.12
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - git
+
+test:
+  commands:
+    - raxmlHPC-PTHREADS-AVX -v
+
+about:
+  home: https://sco.h-its.org/exelixis/web/software/raxml
+  summary: Randomized Axelerated Maximum Likelihood
+  license: GPLv3
+  license_file: gpl-3.0.txt
