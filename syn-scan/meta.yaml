@@ -1,0 +1,21 @@
+package:
+  name: syn-scan
+  version: 0.9
+
+source:
+  url: https://hivdb.stanford.edu/pages/synscan/synscan-unix.tar.gz
+  sha256: 0f0dd6f525e1d8bb3389be35b6c0d11b550a5ac63a3bfc5ab840d33fd0931c30
+
+requirements:
+  build:
+    - perl
+  run:
+    - perl
+
+test:
+  commands:
+    - syn-scan.pl
+
+about:
+  home: https://hivdb.stanford.edu/pages/synscan.html
+  summary: Synonymous Nonsynonymous Mutation Rates between Sequences Containing Ambiguous Nucleotides
