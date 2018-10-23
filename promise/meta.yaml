@@ -1,0 +1,40 @@
+{% set name = "promise" %}
+{% set version = "2.2.1" %}
+{% set file_ext = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "348f5f6c3edd4fd47c9cd65aed03ac1b31136d375aa63871a57d3e444c85655c" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - six
+  run:
+    - python
+    - six
+
+test:
+  imports:
+    - promise
+    - promise.pyutils
+    - promise.schedulers
+
+about:
+  home: https://github.com/syrusakbary/promise
+  summary: Promises/A+ implementation for Python
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
