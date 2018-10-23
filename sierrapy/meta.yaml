@@ -1,0 +1,58 @@
+{% set name = "sierrapy" %}
+{% set version = "0.2.1" %}
+{% set file_ext = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "ec99e40cccaceb4617665428ff9b058026bd4e593f1bdb1c3ad821082c97c99d" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+  entry_points:
+    - sierrapy = sierrapy.cmds:main
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - promise >=0.4.2
+    - gql >=0.1.0
+    - tqdm >=4.8.4
+    - voluptuous >=0.10.5
+    - graphql-core >=0.5.3
+    - click >=6.7
+    - six >=1.10.0
+    - requests >=2.11.1
+  run:
+    - python
+    - promise >=0.4.2
+    - gql >=0.1.0
+    - tqdm >=4.8.4
+    - voluptuous >=0.10.5
+    - graphql-core >=0.5.3
+    - click >=6.7
+    - six >=1.10.0
+    - requests >=2.11.1
+
+test:
+  imports:
+    - sierrapy
+    - sierrapy.commands
+    - sierrapy.fragments
+    - sierrapy.recipes
+  commands:
+    - sierrapy --help
+
+about:
+  home: https://github.com/hivdb/sierra-client/tree/master/python
+  summary: A Client of HIVdb Sierra GraphQL Webservice
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
