@@ -1,0 +1,52 @@
+{% set name = "graphql-core" %}
+{% set version = "2.1" %}
+{% set file_ext = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "889e869be5574d02af77baf1f30b5db9ca2959f1c9f5be7b2863ead5a3ec6181" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - six >=1.10.0
+    - promise >=2.1
+    - rx >=1.6.0
+  run:
+    - python
+    - six >=1.10.0
+    - promise >=2.1
+    - rx >=1.6.0
+
+test:
+  imports:
+    - graphql
+    - graphql.backend
+    - graphql.error
+    - graphql.execution
+    - graphql.execution.executors
+    - graphql.language
+    - graphql.pyutils
+    - graphql.type
+    - graphql.utils
+    - graphql.validation
+    - graphql.validation.rules
+
+about:
+  home: https://github.com/graphql-python/graphql-core
+  summary: GraphQL implementation for Python
+  license: MIT License
+  license_family: MIT
+  license_file: LICENSE
