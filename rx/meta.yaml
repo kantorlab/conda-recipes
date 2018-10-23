@@ -1,0 +1,50 @@
+{% set name = "Rx" %}
+{% set version = "1.6.1" %}
+{% set file_ext = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "13a1d8d9e252625c173dc795471e614eadfe1cf40ffc684e08b8fff0d9748c23" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+
+requirements:
+  host:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - rx
+    - rx.backpressure
+    - rx.concurrency
+    - rx.concurrency.mainloopscheduler
+    - rx.core
+    - rx.core.py2
+    - rx.core.py3
+    - rx.disposables
+    - rx.internal
+    - rx.joins
+    - rx.linq
+    - rx.linq.enumerable
+    - rx.linq.observable
+    - rx.linq.observable.blocking
+    - rx.subjects
+    - rx.testing
+
+about:
+  home: http://reactivex.io
+  summary: Reactive Extensions (Rx) for Python
+  license: Apache Software License
+  license_family: APACHE
+  license_file: LICENSE-2.0
