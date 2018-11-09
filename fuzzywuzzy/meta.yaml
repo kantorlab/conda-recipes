@@ -1,0 +1,28 @@
+package:
+  name: fuzzywuzzy
+  version: 0.16.0
+
+source:
+  git_url: https://github.com/seatgeek/fuzzywuzzy
+  git_tag: 0.16.0
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - fuzzywuzzy
+
+about:
+  home: https://github.com/seatgeek/fuzzywuzzy
+  summary: Fuzzy string matching in python
+  license: GPL
+  license_file: LICENSE.txt
