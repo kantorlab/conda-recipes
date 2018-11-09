@@ -1,0 +1,32 @@
+package:
+  name: python-levenshtein
+  version: 0.12.0
+
+source:
+  fn: python-Levenshtein-0.12.0.tar.gz
+  url: https://pypi.python.org/packages/42/a9/d1785c85ebf9b7dfacd08938dd028209c34a0ea3b1bcdb895208bd40a67d/python-Levenshtein-0.12.0.tar.gz
+  md5: e8cde197d6d304bbdc3adae66fec99fb
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+  host:
+    - python
+    - setuptools
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - Levenshtein
+
+about:
+  home: http://github.com/ztane/python-Levenshtein
+  summary: Python extension for computing string edit distances and similarities
+  license: GPLv2
+  license_file: COPYING
