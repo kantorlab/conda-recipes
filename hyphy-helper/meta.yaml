@@ -1,0 +1,41 @@
+{% set name = "hyphy-helper" %}
+{% set version = "0.9.9" %}
+{% set file_ext = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "8d227374ca5eacbcd44afce8ddb6d49b53020779749d19b8ef81a59c2e97a7b9" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - hyphy-python >=0.1.8
+    - cython >=0.22.1
+    - fakemp >=0.9.1
+  run:
+    - python
+    - hyphy-python >=0.1.8
+    - cython >=0.22.1
+    - fakemp >=0.9.1
+
+test:
+  imports:
+    - hppy
+
+about:
+  home: http://github.com/veg/hppy
+  summary: An intuitive HyPhy interface for Python
+  license: GNU GPL version 3
+  license_family: GPL3
