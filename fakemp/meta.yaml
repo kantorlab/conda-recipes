@@ -1,0 +1,35 @@
+{% set name = "fakemp" %}
+{% set version = "0.9.1" %}
+{% set file_ext = "tar.gz" %}
+{% set hash_type = "sha256" %}
+{% set hash_value = "320885d5851e0c568cd4247fa81e48f055e435822643e5bda9d82edc53c3b938" %}
+
+package:
+  name: '{{ name|lower }}'
+  version: '{{ version }}'
+
+source:
+  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
+  '{{ hash_type }}': '{{ hash_value }}'
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - fakemp
+
+about:
+  home: https://github.com/nlhepler/fakemp
+  summary: Fake multiprocessing pool objects
+  license: GNU GPL version 3
+  license_family: GPL3
