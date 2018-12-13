@@ -1,0 +1,33 @@
+package:
+  name: hivclustering
+  version: 1.2.8
+
+source:
+  url: https://files.pythonhosted.org/packages/50/01/828d4bfa522848698970e08f4277024c18852b86dbdfc5191bb271d756af/hivclustering-1.2.8.tar.gz
+  sha256: 6d3563e0b295cb80bf077738661624bba8352ccb53eb377d0415e836a32a2d17
+
+build:
+  script: python setup.py install --single-version-externally-managed --record record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+    - bioext
+    - hyphy-helper
+  run:
+    - python
+    - setuptools
+    - bioext
+    - hyphy-helper
+
+test:
+  imports:
+    - hivclustering
+  commands:
+    - hivnetworkcsv -h
+
+about:
+  home: https://github.com/veg/hivclustering
+  summary: A Python 3 library that makes inferences on HIV-1 transmission networks
+  license: MIT
