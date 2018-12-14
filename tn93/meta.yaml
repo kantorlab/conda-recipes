@@ -1,0 +1,23 @@
+package:
+  name: tn93
+  version: 1.0.6
+
+source:
+  git_url: https://github.com/veg/tn93
+  git_tag: v1.0.6
+
+requirements:
+  build:
+    - {{ compiler('c') }}
+    - {{ compiler('cxx') }}
+    - cmake
+
+test:
+  commands:
+    - tn93 -h 2>&1 | grep 'usage'
+
+about:
+  home: https://github.com/veg/tn93
+  summary: fast pairwise Tamura Nei 93 distance calculator
+  license: MIT
+  license_file: LICENSE
