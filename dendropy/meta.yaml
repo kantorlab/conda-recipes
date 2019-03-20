@@ -1,0 +1,38 @@
+package:
+  name: dendropy
+  version: 4.4.0
+
+source:
+  git_url: https://github.com/jeetsukumaran/DendroPy
+  git_tag: v4.4.0
+
+build:
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+  run:
+    - python
+    - setuptools
+
+test:
+  imports:
+    - dendropy
+    - dendropy.calculate
+    - dendropy.dataio
+    - dendropy.datamodel
+    - dendropy.interop
+    - dendropy.legacy
+    - dendropy.mathlib
+    - dendropy.model
+    - dendropy.simulate
+    - dendropy.utility
+    - dendropy.utility.libexec
+
+about:
+  home: http://packages.python.org/DendroPy/
+  summary: A Python library for phylogenetics and phylogenetic computing
+  license: BSD License
+  license_file: LICENSE.rst
