@@ -1,0 +1,29 @@
+package:
+  name: sierralocal
+  version: 0.1.2
+
+source:
+  git_url: https://github.com/PoonLab/sierra-local
+  git_tag: v0.1.2
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record=record.txt
+
+requirements:
+  host:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - sierralocal
+
+about:
+  home: https://github.com/PoonLab/sierra-local
+  summary: Local execution of HIVdb algorithm
+  license: GNU General Public License v3 (GPLv3)
+  license_family: GPL3
+  license_file: LICENSE
