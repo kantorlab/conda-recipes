@@ -16,10 +16,13 @@ requirements:
     - setuptools
   run:
     - python
+    - requests
 
 test:
   imports:
     - sierralocal
+  commands:
+    - sierralocal -h
 
 about:
   home: https://github.com/PoonLab/sierra-local
