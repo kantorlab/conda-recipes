@@ -14,7 +14,7 @@ source:
   '{{ hash_type }}': '{{ hash_value }}'
 
 build:
-  number: 0
+  number: 1
   entry_points:
     - hivtrace = hivtrace.hivtrace:main
     - hivtrace_strip_drams = hivtrace.strip_drams:main
@@ -31,6 +31,7 @@ requirements:
     - python
     - setuptools
     - tornado
+    - tn93
     - hivclustering ==1.2.8
 
 test:
