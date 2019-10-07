@@ -1,6 +1,6 @@
 package:
   name: bioconductor-ggtree
-  version: 3.8
+  version: 3.9
 
 build:
   rpaths:
@@ -9,13 +9,13 @@ build:
 
 requirements:
   host:
-    - r-base
+    - r-base 3.6.0
     - r-ape
     - r-ggplot2
     - r-magrittr
     - r-tidyverse
   run:
-    - r-base
+    - r-base 3.6.0
     - r-ape
     - r-ggplot2
     - r-magrittr
