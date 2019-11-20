@@ -1,0 +1,48 @@
+package:
+  name: tectonic
+  version: 0.1.11
+
+source:
+  fn: tectonic-0.1.11.tar.gz
+  url: https://crates.io/api/v1/crates/tectonic/0.1.11/download
+  sha256: cfb7dfc2995c753049e2ac009f4f8ee5b3951d721e169132551d92b1098c2f1a
+
+build:
+  number: 0
+
+requirements:
+  build:
+    - rust
+    - pkg-config
+    - {{compiler('c')}}
+    - {{compiler('cxx')}}
+  host:
+    - fontconfig
+    - freetype
+    - graphite2
+    - harfbuzz
+    - icu
+    - libpng >=1.6.35
+    - openssl
+    - zlib
+  run:
+    - fontconfig
+    - freetype
+    - graphite2
+    - harfbuzz
+    - icu
+    - libpng
+    - openssl
+    - zlib
+
+test:
+  commands:
+    - conda inspect linkages -p $PREFIX $PKG_NAME
+    - tectonic --help
+
+about:
+  home: https://tectonic-typesetting.github.io/
+  license: MIT
+  license_family: MIT
+  license_file: LICENSE
+  summary: 'A modernized, complete, standalone TeX/LaTeX engine.'
