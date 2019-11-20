@@ -1,0 +1,35 @@
+{% set version = "1.39.0" %}
+
+package:
+  name: rust
+  version: {{ version }}
+
+source:
+  url: https://static.rust-lang.org/dist/rust-{{ version }}-x86_64-unknown-linux-gnu.tar.gz  # [linux and x86_64]
+  sha256: b10a73e5ba90034fe51f0f02cb78f297ed3880deb7d3738aa09dc5a4d9704a25  # [linux and x86_64]
+
+build:
+  number: 0
+  # the distributed binaries are already relocatable
+  binary_relocation: False
+
+requirements:
+  run:
+    - {{compiler('c')}}  # [linux] -- rustc needs a toolchain to link executables on Linux
+
+test:
+  commands:
+    - rustc --help
+    - rustdoc --help
+    - cargo --help
+    - cargo install --force xsv
+
+about:
+  home: https://www.rust-lang.org
+  license: MIT
+  license_file:
+    - LICENSE-APACHE
+    - LICENSE-MIT
+  summary: |
+    Rust is a systems programming language that runs blazingly fast, prevents segfaults, and guarantees thread safety.
+    This package provides the compiler (rustc) and the documentation utilities rustdoc.
