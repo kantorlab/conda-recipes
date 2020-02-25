@@ -1,0 +1,27 @@
+package:
+  name: raxml-ng
+  version: 0.9.0
+
+source:
+  git_url: https://github.com/amkozlov/raxml-ng
+  git_tag: 0.9.0
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - bison
+    - flex
+    - cmake
+  host:
+    - gmp
+
+test:
+  commands:
+    - raxml-ng --version
+
+about:
+   home: https://github.com/amkozlov/raxml-ng
+   license: AGPL-3
+   license_family: AGPL
+   license_file: LICENSE.txt
+   summary: "RAxML Next Generation: faster, easier-to-use and more flexible"
