@@ -13,21 +13,21 @@ requirements:
   host:
     - python
     - setuptools
-    - biopython
+    - biopython ==1.73
     - click
     - numpy
     - scipy
-    - bowtie2 ==2.3.4.1
+    - bowtie2 ==2.3.5.1
     - pysam ==0.14.1
     - samtools ==1.3.1
   run:
     - python
     - setuptools
-    - biopython
+    - biopython ==1.73
     - click
     - numpy
     - scipy
-    - bowtie2 ==2.3.4.1
+    - bowtie2 ==2.3.5.1
     - pysam ==0.14.1
     - samtools ==1.3.1
 
