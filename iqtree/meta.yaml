@@ -1,10 +1,10 @@
 package:
   name: iqtree
-  version: 1.6.7.1
+  version: 2.0.4
 
 source:
   git_url: https://github.com/Cibiv/IQ-TREE
-  git_tag: v1.6.7.1
+  git_tag: v2.0.4
 
 requirements:
   build:
@@ -12,6 +12,7 @@ requirements:
     - {{ compiler('cxx') }}
     - cmake
   host:
+    - boost-cpp
     - eigen
     - zlib
   run:
@@ -19,7 +20,7 @@ requirements:
 
 test:
   commands:
-    - iqtree
+    - iqtree2
 
 about:
   home: http://www.iqtree.org/
